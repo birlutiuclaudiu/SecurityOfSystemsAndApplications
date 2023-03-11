@@ -4,7 +4,12 @@
 # copy and paste the machine code to the following:
 # aici este codul pe care l-am regasit in codul masina pentru shellcode
 ori_sh ="""
-31c050682f2f7368682f62696e89e3505389e131d231c0b00bcd80
+31c050682f656e76
+682f62696e682f75737289e3b8342a2a2ac1e018
+c1e81850683d313233686363636389e631c05068
+35363738686262623d89e1506831323334686161
+613d89e231c050535056515289e189e231c0b00b
+cd80
 """
 
 sh = ori_sh.replace("\n", "")
