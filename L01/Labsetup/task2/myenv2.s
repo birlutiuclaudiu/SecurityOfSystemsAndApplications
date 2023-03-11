@@ -7,13 +7,14 @@ section .text
 		  ;eticheta este în interiorul aceluiași segment de cod, adică distanța 
 		  ;până la etichetă este de cel mult 127 de octeți
     one:
-		pop ebx     		;e adresa sirului '/bin/sh*AAAABBBB' 
+		pop ebx     		;e adresa sirului '/usr/bin/env****AAAAa=11BBBBb=22CCCC'
 		xor eax, eax 		;se initializeaza cu 0 fara a introduce octeiti de 0 in codul masina
-		mov [ebx+7], al     ;se sparge sirul de caractere /bin/sh; * este inlocuita cu /0 -temrinatorul de sir
-		mov [ebx+8], ebx    ;octetii AAAA vor fi inlocuiti cu adresa sirului
-		mov [ebx+12], eax   ;octetii BBBB vor fi inlocuiti cu 0000
-		lea ecx, [ebx+8]    ;se incarca registru ecx cu adresa sirului 
-		xor edx, edx        ; nu exista variabile de mediu
+		mov [ebx+12], eax   ;se sparge sirul de caractere usr/bin/env; **** sunt inlocuite cu octeti de 0
+		mov [ebx+16], ebx   ;octetii AAAA vor fi inlocuiti cu adresa sirului de inceput
+		mov [ebx+24], eax   ;octetii BBBB vor fi inlocuiti cu 0000
+        mov [ebx+28], eax   ;octetii CCCC vor fi inlocuiti cu 0000
+		lea ecx, [ebx+16]   ;se incarca registru ecx cu adresa sirului 
+		lea edx, [ebx+20]   ;se incarca registru edx cu adresa sirului
 		mov al,  0x0b       ;se pune codul instructiunii execve
 		int 0x80            ;se face apelul functiei execve
      two:
@@ -22,4 +23,4 @@ section .text
 		; la instructiunea urmatoare dupa ce se executa pasii de la eticheta 2, dar instructiunea
 		; urmatoarea reprezinta de fapt declararea unei variabile, ceea ce arata faptul ca pe 
 		; stiva vom avea in varf stringul de mai jos
-		db '/bin/sh*AAAABBBB' ;declararea stringului, a carui adresa este pusa pe stiva 
+		db '/usr/bin/env****AAAAa=12BBBBCCCC' ;declararea stringului, a carui adresa este pusa pe stiva 
