@@ -2,7 +2,7 @@
 import sys
 
 # Initialize the content array
-N=66
+N=64
 content = bytearray(0x0 for i in range(N*4+12))
 #
 number1  = 0x44434241  #ABCD
