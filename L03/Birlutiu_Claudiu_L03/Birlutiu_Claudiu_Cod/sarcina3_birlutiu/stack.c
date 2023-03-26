@@ -15,9 +15,10 @@ void dummy_function(char *str);
 int bof(char *str)
 {
     char buffer[BUF_SIZE];
-    // printf("&buffer=%p %d\n", &buffer, BUF_SIZE);
-    // printf("frame address=%p\n", __builtin_frame_address (0));
-    // printf("return address=%p\n", __builtin_return_address (0));
+    printf("&buffer=%p %d\n", &buffer, BUF_SIZE);
+    printf("frame address=%p\n", __builtin_frame_address (0));
+    printf("return address=%p\n", __builtin_return_address (0));
+    // The following statement has a buffer overflow problem 
     // The following statement has a buffer overflow problem 
     strcpy(buffer, str);       
 
