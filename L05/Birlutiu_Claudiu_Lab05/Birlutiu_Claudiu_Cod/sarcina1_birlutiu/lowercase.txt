@@ -1,0 +1,5 @@
+object detection performance, as measured on the canonical pascal voc dataset, has plateaued in the last few years. 
+the best-performing methods are complex ensemble systems that typically combine multiple low-level image features with high-level context. 
+in this paper, we propose a simple and scalable detection algorithm that improves mean average precision (map) by more than 30% relative to the previous best result on voc 2012—achieving a mapof 53.3%. 
+our approach combines two key insights: (1) one can apply high-capacity convolutional neural networks (cnns) to bottom-up region proposals in order to localize and segment objects and (2) when labeled training data is scarce, supervised pre-training for an auxiliary task, followed by domain-specific fine-tuning, yields a significant performance boost. since we combine region proposals with cnns, we call our method r-cnn: regions with cnn features. 
+we also compare r-cnn to overfeat, a recently proposed sliding-window detector based on a similar cnn architecture.
