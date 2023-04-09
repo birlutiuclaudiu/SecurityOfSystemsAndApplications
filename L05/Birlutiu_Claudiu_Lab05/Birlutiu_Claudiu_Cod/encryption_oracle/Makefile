@@ -1,7 +1,7 @@
 CXXFLAGS = -O2 -Wall -std=c++11
 LIBS = -lcrypto
 
-all: server
+all: known_iv
 
 server: output_dir server.cpp known_iv 
 	$(CXX) $(CXXFLAGS) $@.cpp -o ./build/$@ $(LIBS)
