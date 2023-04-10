@@ -5,11 +5,12 @@ def xor(first, second):
    return bytearray(x^y for x,y in zip(first, second))
 
 
-IV_1 = "b8c1226d0517a72f71acf59c98ff9076"   #reprezinta primul IV cu care Bob a codificat mesajul 
-CT_1 = "90e620623fa06434e0f71401909d9192"   #mesajul codificat cu ajutorul IV_1
-IV_2 = "5b30bedf0517a72f71acf59c98ff9076"   #IV -ul urmator; predictibil
+IV_1 = "54493f2436e832371dd11a654363e40e"   #reprezinta primul IV cu care Bob a codificat mesajul 
+CT_1 = "a4ff8a8e9e41f11a467d49de97680f6b"   #mesajul codificat cu ajutorul IV_1
+IV_2 = "7d4d697436e832371dd11a654363e40e"   #IV -ul urmator; predictibil
 #ideea e sa ghicim ce a zis BOB astfel ca vom prezice daca a spus Yes
-Pred_1 = "Yes" #valoare presupusa
+Pred_1 = "Yes\x0D\x0D\x0D\x0D\x0D\x0D\x0D\x0D\x0D\x0D\x0D\x0D\x0D" #valoare presupusa
+
 
 # Convert ascii string to bytearray
 P1 = bytes(Pred_1, 'utf-8')                #obtinerea de bytes din sirul de caractere
