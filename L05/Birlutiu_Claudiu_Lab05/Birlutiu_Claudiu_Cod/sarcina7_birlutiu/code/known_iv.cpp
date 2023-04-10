@@ -22,7 +22,9 @@ int main(int argc, char const *argv[]){
     }
     // plaintext define array of bytes
     std::string inputString = "This is a top secret.";
-    Bytes ptext1(inputString.begin(), inputString.end()); 
+    Bytes ptext1(inputString.begin(), inputString.end());
+    ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B); 
+    ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B); ptext1.emplace_back(0x0B);
     //read words from the file
     std::ifstream inputFile("words.txt");
     std::string line;
